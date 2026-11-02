@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-marfil: #faf8f3;
+  --color-azul: #1b2f4e;
+  --color-pizarra: #55606f;
+  --color-dorado: #b08d3f;
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant);
+}
