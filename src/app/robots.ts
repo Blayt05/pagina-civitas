@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { sitio } from "@/content/sitio";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://civitastec.com/sitemap.xml",
+    sitemap: `${sitio.url}/sitemap.xml`,
   };
 }

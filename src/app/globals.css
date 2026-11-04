@@ -1,10 +1,75 @@
 @import "tailwindcss";
 
+/*
+ * Paleta oficial de CIVITAS.
+ * `--color-*: initial` elimina los colores por defecto de Tailwind para que
+ * solo se puedan usar los tokens de la marca (bg-civitas-rojo, etc.).
+ */
+@theme {
+  --color-*: initial;
+  --color-civitas-rojo: #780e00;
+  --color-civitas-terracota: #ad3f26;
+  --color-civitas-ocre: #9f6422;
+  --color-civitas-arena: #d3bb8d;
+  --color-civitas-taupe: #968664;
+  --color-civitas-cafe: #3d2c12;
+  --color-civitas-marino: #04305d;
+  --color-civitas-azul: #0053a3;
+  --color-civitas-crema: #f9f7f1;
+}
+
 @theme inline {
-  --color-marfil: #faf8f3;
-  --color-azul: #1b2f4e;
-  --color-pizarra: #55606f;
-  --color-dorado: #b08d3f;
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-cormorant);
+  --font-serif: var(--font-playfair);
+}
+
+html {
+  /* Compensa la barra de navegación fija al saltar a una sección. */
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Aparición suave al hacer scroll, solo en CSS (sin JavaScript). */
+  @supports (animation-timeline: view()) {
+    .revelar {
+      animation: revelar linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+@keyframes revelar {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Foco visible y consistente en toda la página. */
+:focus-visible {
+  outline: 2px solid var(--color-civitas-rojo);
+  outline-offset: 3px;
+}
+
+.sobre-oscuro :focus-visible {
+  outline-color: var(--color-civitas-crema);
+}
+
+/* Acordeón nativo (<details>): oculta el marcador por defecto. */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Números alineados en la serif (citas bíblicas, horarios, pasos). */
+.font-serif {
+  font-variant-numeric: lining-nums;
 }
